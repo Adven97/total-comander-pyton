@@ -1,7 +1,7 @@
 import sys
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QAction, QFileSystemModel,QTreeView, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QLabel
+from PyQt5.QtWidgets import QMainWindow,QAbstractButton, QApplication, QPushButton, QAction, QFileSystemModel,QTreeView, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QLabel
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import *
 
 class MyMainWindow(QMainWindow):
     def __init__(self, parent=None):
@@ -21,7 +21,11 @@ class MyMainWindow(QMainWindow):
         toolsMenu = mainMenu.addMenu('Show')
         helpMenu = mainMenu.addMenu('Configuration')
         helpMenu = mainMenu.addMenu('Start')
-        helpMenu = mainMenu.addMenu('Help')
+
+        menu2 = self.menuBar()
+        menu2.setAlignment(Qt.AlignRight)
+        helpMenu = menu2.addMenu('Help')
+
 
 class App(QWidget):
 
@@ -30,6 +34,22 @@ class App(QWidget):
         self.initUI()
 
     def initUI(self):
+
+        vmain = QVBoxLayout()
+
+        upbar = QHBoxLayout()
+        upbar.setAlignment(Qt.AlignLeft)
+        u1 = QPushButton()
+        u1.setIcon(QIcon('refresh.jpg'))
+        u2 = QPushButton()
+        u2.setIcon(QIcon('grid.png'))
+        u3 = QPushButton()
+        u3.setIcon(QIcon('grid2.png'))
+
+        upbar.addWidget(u1)
+        upbar.addWidget(u2)
+        upbar.addWidget(u3)
+        vmain.addLayout(upbar)
 
         self.model = QFileSystemModel()
         self.model.setRootPath('')
@@ -48,7 +68,9 @@ class App(QWidget):
         self.tree2.setSortingEnabled(True)
         self.tree2.resize(640, 480)
 
-        vmain = QVBoxLayout()
+
+
+        ###     b1.setIcon(QIcon('tc.png'))     ustawienie img na przycisk
 
         windowLayout = QHBoxLayout()
         windowLayout.addWidget(self.tree)
