@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow,QAbstractButton, QApplication, QPushButton, QAction, QFileSystemModel,QTreeView, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QLabel
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
 class MyMainWindow(QMainWindow):
@@ -22,8 +22,7 @@ class MyMainWindow(QMainWindow):
         helpMenu = mainMenu.addMenu('Configuration')
         helpMenu = mainMenu.addMenu('Start')
 
-        menu2 = self.menuBar()
-        menu2.setAlignment(Qt.AlignRight)
+        menu2 =  self.menuBar()
         helpMenu = menu2.addMenu('Help')
 
 
